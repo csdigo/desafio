@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Compartilhado", "3 - Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muniz.Desafio.Crosscutting", "Muniz.Desafio.Crosscutting\Muniz.Desafio.Crosscutting.csproj", "{6DF47280-5AE2-4A29-AE4F-0B3CBCEAD917}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Muniz.Desafio.Domain", "Muniz.Desafio.Domain\Muniz.Desafio.Domain.csproj", "{18F8891A-112E-4A09-B7E3-392F9CF4D304}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{6DF47280-5AE2-4A29-AE4F-0B3CBCEAD917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DF47280-5AE2-4A29-AE4F-0B3CBCEAD917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DF47280-5AE2-4A29-AE4F-0B3CBCEAD917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F8891A-112E-4A09-B7E3-392F9CF4D304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F8891A-112E-4A09-B7E3-392F9CF4D304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F8891A-112E-4A09-B7E3-392F9CF4D304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F8891A-112E-4A09-B7E3-392F9CF4D304}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{320BFF92-A5CE-4FD1-B8D6-3AFB2E29094F} = {C0185124-4607-4170-BE45-41C464894A51}
 		{0B61D79A-9F6D-47CC-AD9C-BB3DF0F841A5} = {C0185124-4607-4170-BE45-41C464894A51}
 		{6DF47280-5AE2-4A29-AE4F-0B3CBCEAD917} = {BADFDD94-B594-4E30-8472-D3F5FAB0A1A0}
+		{18F8891A-112E-4A09-B7E3-392F9CF4D304} = {5FEED59D-A51A-4DD3-A417-769937110D7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0A8ED697-96CD-4096-93F7-190B4D60C8A4}
