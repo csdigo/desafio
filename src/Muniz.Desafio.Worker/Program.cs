@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Muniz.Desafio.Worker
+﻿namespace Muniz.Desafio.Worker
 {
     class Program
     {
