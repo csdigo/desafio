@@ -1,7 +1,8 @@
 ﻿namespace Muniz.Desafio.Domain.Contracts
 {
-    public interface IMessengerStorage 
+    public interface IMessengerStorage
     {
-        void SendQueueAsync(ICommand command);
+        void SendQueueAsync<Command>(Command command)
+            where Command : class;
     }
 }

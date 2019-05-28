@@ -6,10 +6,10 @@ namespace Muniz.Desafio.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EventoController : ControllerBase
+    public class EventosController : ControllerBase
     {
         IMessengerStorage _messenger;
-        public EventoController(IMessengerStorage messenger)
+        public EventosController(IMessengerStorage messenger)
         {
             _messenger = messenger;
         }
