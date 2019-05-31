@@ -15,7 +15,7 @@ namespace Muniz.Desafio.Api.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] CriarEventoCommand command)
+        public async void Post([FromBody] CriarEventoCommand command)
         {
             _messenger.SendQueueAsync(command);
         }

@@ -1,6 +1,7 @@
 ﻿using MassTransit;
 using Muniz.Desafio.Domain.Commands.Command;
 using Muniz.Desafio.Domain.Commands.CommandHandler;
+using System;
 using System.Threading.Tasks;
 
 namespace Muniz.Desafio.Infra.Mapping.RabbitMq
@@ -18,9 +19,8 @@ namespace Muniz.Desafio.Infra.Mapping.RabbitMq
             return Task.Run(() =>
             {
                 _commandHandler.Handle(context.Message);
-                System.Diagnostics.Debug.WriteLine($"Mensagem consumida : " + context.Message.Timestamp);
-            }
-            );
+                Console.WriteLine($"Mensagem consumida : " + context.Message.Timestamp);
+            });
 
         }
     }

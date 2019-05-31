@@ -9,7 +9,7 @@ namespace Muniz.Domain.Desafio.Entities
 
         public Evento(string tag, string valor, long timeStamp)
         {
-            Id = Guid.NewGuid();
+            Id = timeStamp;
             
             // Data e hora que o evento foi processado
             Registrado = DateTime.Now;
@@ -32,7 +32,7 @@ namespace Muniz.Domain.Desafio.Entities
 
         #region Propriedades
 
-        public Guid Id { get; }
+        public long Id { get; }
 
         public string Tag { get; }
 

@@ -1,7 +1,9 @@
 ﻿using Muniz.Desafio.Crosscutting.IoC;
-using Muniz.Desafio.Domain.Commands.Command;
-using Muniz.Desafio.Domain.Contracts;
 using SimpleInjector;
+using SimpleInjector.Lifestyles;
+using MassTransit;
+using Muniz.Desafio.Infra.Mapping.RabbitMq;
+using System;
 
 namespace Muniz.Desafio.Worker
 {
@@ -10,12 +12,29 @@ namespace Muniz.Desafio.Worker
         public static void Init()
         {
             var container = new Container();
+
+            container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
             CustomDependecyResolver.Resolve(container);
 
-            var messeger = container.GetInstance<IMessengerStorage>();
+            var bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
+            {
+                var a = sbc.Host(new Uri("rabbitmq://localhost"), h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
 
-            // Consumindo os eventos dos sensores
-            messeger.ListenQueueAsync<CriarEventoCommand>();
+                });
+
+                a.ConnectReceiveEndpoint("Evento", x =>
+                {
+                    x.Consumer<EventoConsumer>(container);
+                });
+
+            });
+
+            
+            bus.Start();
+
         }
     }
 }

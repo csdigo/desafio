@@ -15,56 +15,20 @@ namespace Muniz.Desafio.Infra.Mq
         private string _username;
         private string _password;
 
-        public MessengerStorage(string host, string username = "guest", string password = "guest")
+        public MessengerStorage(IBusControl bus)
         {
-            _host = host;
-            _username = username;
-            _password = password;
-
-            _bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
-            {
-                var a = sbc.Host(new Uri(host), h =>
-                {
-                    h.Username(username);
-                    h.Password(password);
-
-                });
-
-            });
-
-            _bus.Start();
-
+            _bus = bus;
+            
             new EndpointMap();
         }
 
-        public void ListenQueueAsync<Command>() where Command : class
-        {
-            //var consumer = container.GetInstance<IEventoConsumer>();
-            _bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
-            {
-                var a = sbc.Host(new Uri(_host), h =>
-                {
-                    h.Username(_username);
-                    h.Password(_password);
-                    
+        // TODO Colocar o Listen no mensageiro
 
-                });
-                a.ConnectReceiveEndpoint("evento", x =>
-                {
-                    
-                   
-                });
-            });
-
-            _bus.Start();
-        }
-
-        public  void SendQueueAsync<Command>(Command command)
+        public void SendQueueAsync<Command>(Command command)
             where Command : class
 
         {
             _bus.Send(command);
-            Console.WriteLine("Enviando Pra Fila");
         }
 
 
