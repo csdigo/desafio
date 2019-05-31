@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace Muniz.Desafio.Api.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class EventosController : ControllerBase
@@ -15,10 +16,17 @@ namespace Muniz.Desafio.Api.Controllers
             _messenger = messenger;
         }
 
+        /// <summary>
+        /// Endpoint para registrar os eventos dos sensores
+        /// </summary>
+        /// <param name="entrada">
+        /// Informações do sensor
+        /// </param>
+        /// <returns></returns>
         [HttpPost]
-        public Task Post([FromBody] CriarEventoCommand command)
+        public Task Post([FromBody] CriarEventoCommand entrada)
         {
-            return _messenger.SendQueueAsync(command);
+            return _messenger.SendQueueAsync(entrada);
         }
     }
 }

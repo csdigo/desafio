@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Muniz.Desafio.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Muniz.Desafio.Api.Controllers.EventosController.Post(Muniz.Desafio.Domain.Commands.Command.CriarEventoCommand)">
+            <summary>
+            Endpoint para registrar os eventos dos sensores
+            </summary>
+            <param name="command">
+            Valor é o dado coletado de um determinado sensor (podendo ser numérico ou string).
+            
+            </param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
