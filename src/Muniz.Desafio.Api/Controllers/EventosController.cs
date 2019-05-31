@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Muniz.Desafio.Domain.Commands.Command;
 using Muniz.Desafio.Domain.Contracts;
+using System.Threading.Tasks;
 
 namespace Muniz.Desafio.Api.Controllers
 {
@@ -15,9 +16,9 @@ namespace Muniz.Desafio.Api.Controllers
         }
 
         [HttpPost]
-        public async void Post([FromBody] CriarEventoCommand command)
+        public Task Post([FromBody] CriarEventoCommand command)
         {
-            _messenger.SendQueueAsync(command);
+            return _messenger.SendQueueAsync(command);
         }
     }
 }

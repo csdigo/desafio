@@ -5,6 +5,7 @@ using Muniz.Desafio.Domain.Contracts;
 using Muniz.Desafio.Infra.Mapping.RabbitMq;
 using SimpleInjector;
 using System;
+using System.Threading.Tasks;
 
 namespace Muniz.Desafio.Infra.Mq
 {
@@ -24,13 +25,12 @@ namespace Muniz.Desafio.Infra.Mq
 
         // TODO Colocar o Listen no mensageiro
 
-        public void SendQueueAsync<Command>(Command command)
+        public Task SendQueueAsync<Command>(Command command)
             where Command : class
 
         {
-            _bus.Send(command);
+            return _bus.Send(command);
         }
-
 
     }
 }
