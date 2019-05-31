@@ -28,5 +28,15 @@ namespace Muniz.Desafio.Api.Controllers
         {
             return _messenger.SendQueueAsync(entrada);
         }
+
+        /// <summary>
+        /// Retorna todos os eventos
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet()]
+        public Task Get()
+        {
+            return null;
+        }
     }
 }

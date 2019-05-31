@@ -8,10 +8,15 @@
             <summary>
             Endpoint para registrar os eventos dos sensores
             </summary>
-            <param name="command">
-            Valor é o dado coletado de um determinado sensor (podendo ser numérico ou string).
-            
+            <param name="entrada">
+            Informações do sensor
             </param>
+            <returns></returns>
+        </member>
+        <member name="M:Muniz.Desafio.Api.Controllers.EventosController.Get">
+            <summary>
+            Retorna todos os eventos
+            </summary>
             <returns></returns>
         </member>
     </members>
