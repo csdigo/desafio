@@ -37,29 +37,29 @@ namespace Muniz.Domain.Desafio.Entities
 
         #region Propriedades
 
-        public Guid Id { get; }
+        public Guid Id { get; private set; }
 
-        public string Tag { get; }
+        public string Tag { get; private set; }
 
-        public string Valor { get; }
+        public string Valor { get; private set; }
 
         /// <summary>
         /// Data e hora que o evento foi processado
         /// </summary>
-        public DateTime Registrado { get; }
+        public DateTime Registrado { get; private set; }
 
         /// <summary>
         /// Data e hora que o evento foi recebido
         /// </summary>
-        public DateTime Recebimento { get; }
+        public DateTime Recebimento { get; private set; }
 
-        public DateTime DataHoraSensor { get; }
+        public DateTime DataHoraSensor { get; private set; }
 
-        public long Timestamp { get; }
+        public long Timestamp { get; private set; }
 
-        public EventoEstado EventoEstado { get; }
+        public EventoEstado EventoEstado { get; private set; }
 
-        public EventoTipo EventoTipo { get; }
+        public EventoTipo EventoTipo { get; private set; }
 
         #endregion
     }

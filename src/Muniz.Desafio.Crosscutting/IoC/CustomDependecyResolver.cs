@@ -1,4 +1,5 @@
-﻿using Muniz.Desafio.Domain.Contracts;
+﻿
+using Muniz.Desafio.Domain.Contracts;
 using Muniz.Desafio.Domain.Contracts.Repositories;
 using Muniz.Desafio.Infra.Connections;
 using Muniz.Desafio.Infra.Mq;
@@ -19,13 +20,14 @@ namespace Muniz.Desafio.Crosscutting.IoC
             container.Register<IEventoRepository, EventoRepository>();
             container.Register<IEventosRelatorioRepository, EventosRelatorioRepository>();
 
-            container.Register<EventoCommandHandler>();
-            container.Register<EventoRelatorioQueryHandler>();
 
-            
+            container.Register<EventoCommandHandler>();
+            container.Register<RelatorioEventoQueryHandler>();
+            container.Register<EventoQueryHandler>();
+
+
             // TODO configurar corretamente
             container.RegisterInstance(new MongoConnection("mongodb://localhost", "desafio"));
-
 
             var bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
             {
@@ -38,7 +40,7 @@ namespace Muniz.Desafio.Crosscutting.IoC
 
 
             });
-            container.RegisterSingleton(bus);
+            container.RegisterInstance(bus);
             container.RegisterSingleton<IMessengerStorage, MessengerStorage>();
         }
     }

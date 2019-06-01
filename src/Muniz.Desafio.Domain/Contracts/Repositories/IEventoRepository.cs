@@ -8,6 +8,8 @@ namespace Muniz.Desafio.Domain.Contracts.Repositories
     {
         Task InserirAsync(Evento evento);
         Evento BuscarTimestampETag(long timestamp, string tag);
-        IEnumerable<Evento> Todos();
+        IEnumerable<Evento> ListarTodos();
+
+        IEnumerable<Evento> ListarTodosPorPagina(int pagina, int quantidadePorPagina, out long total);
     }
 }

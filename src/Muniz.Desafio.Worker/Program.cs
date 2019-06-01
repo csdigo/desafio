@@ -8,7 +8,7 @@
             {
                 Startup.Init();
             }
-            catch (System.Exception ex)
+            catch
             {
                 // TODO Disparar e-mail
             }

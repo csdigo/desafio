@@ -5,11 +5,11 @@ using Muniz.Desafio.Domain.Queries.Results.EventoRelatorio;
 
 namespace Muniz.Desafio.Domain.Queries.QueryHandler
 {
-    public class EventoRelatorioQueryHandler :
+    public class RelatorioEventoQueryHandler :
         IQueryHandler<EventosUltimaHoraQuery, EventosUltimaHoraResult>
     {
         IEventosRelatorioRepository _repository;
-        public EventoRelatorioQueryHandler(IEventosRelatorioRepository repository)
+        public RelatorioEventoQueryHandler(IEventosRelatorioRepository repository)
         {
             _repository = repository;
         }

@@ -7,17 +7,17 @@ namespace Muniz.Desafio.Api.Controllers
     /// <summary>
     /// Relatórios e metricas dos eventos recebidos pelos sensores
     /// </summary>
-    [Route("api/Eventos/Relatorio")]
+    [Route("api/RelatoriosEventos/")]
     [ApiController]
-    public class EventosRelatorioController : ControllerBase
+    public class RelatoriosEventosController : ControllerBase
     {
-        private readonly EventoRelatorioQueryHandler _queryHandler;
+        private readonly RelatorioEventoQueryHandler _queryHandler;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="queryHandler"></param>
-        public EventosRelatorioController(EventoRelatorioQueryHandler queryHandler)
+        public RelatoriosEventosController(RelatorioEventoQueryHandler queryHandler)
         {
             _queryHandler = queryHandler;
         }
@@ -29,7 +29,6 @@ namespace Muniz.Desafio.Api.Controllers
         public  long Get()
         {
             var result =_queryHandler.Execute(new EventosUltimaHoraQuery());
-
             return result.Quantidade;
         }
     }

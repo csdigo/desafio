@@ -9,6 +9,13 @@
             
             </summary>
         </member>
+        <member name="M:Muniz.Desafio.Api.Controllers.EventosController.#ctor(Muniz.Desafio.Domain.Contracts.IMessengerStorage,Muniz.Desafio.Domain.Queries.QueryHandler.EventoQueryHandler)">
+            <summary>
+            
+            </summary>
+            <param name="messenger"></param>
+            <param name="eventoQuery"></param>
+        </member>
         <member name="M:Muniz.Desafio.Api.Controllers.EventosController.Post(Muniz.Desafio.Domain.Commands.Command.CriarEventoCommand)">
             <summary>
             Endpoint para registrar os eventos dos sensores
@@ -24,18 +31,26 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Muniz.Desafio.Api.Controllers.EventosRelatorioController">
+        <member name="M:Muniz.Desafio.Api.Controllers.EventosController.GetPage(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pagina"></param>
+            <param name="exibirPorPagina"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Muniz.Desafio.Api.Controllers.RelatoriosEventosController">
             <summary>
             Relatórios e metricas dos eventos recebidos pelos sensores
             </summary>
         </member>
-        <member name="M:Muniz.Desafio.Api.Controllers.EventosRelatorioController.#ctor(Muniz.Desafio.Domain.Queries.QueryHandler.EventoRelatorioQueryHandler)">
+        <member name="M:Muniz.Desafio.Api.Controllers.RelatoriosEventosController.#ctor(Muniz.Desafio.Domain.Queries.QueryHandler.RelatorioEventoQueryHandler)">
             <summary>
             
             </summary>
             <param name="queryHandler"></param>
         </member>
-        <member name="M:Muniz.Desafio.Api.Controllers.EventosRelatorioController.Get">
+        <member name="M:Muniz.Desafio.Api.Controllers.RelatoriosEventosController.Get">
             <summary>
             Quantidade de eventos recebidos na ultima hora
             </summary>

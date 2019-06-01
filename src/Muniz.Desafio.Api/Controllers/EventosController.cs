@@ -1,7 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Muniz.Desafio.Domain.Commands.Command;
 using Muniz.Desafio.Domain.Contracts;
 using System.Threading.Tasks;
+using Muniz.Desafio.Domain.Queries.Query;
+using Muniz.Desafio.Domain.Queries.QueryHandler;
+using Muniz.Desafio.Domain.Queries.Results;
+using Muniz.Desafio.Domain.Queries.Results.Evento;
 
 namespace Muniz.Desafio.Api.Controllers
 {
@@ -12,10 +17,18 @@ namespace Muniz.Desafio.Api.Controllers
     [ApiController]
     public class EventosController : ControllerBase
     {
-        IMessengerStorage _messenger;
-        public EventosController(IMessengerStorage messenger)
+        readonly IMessengerStorage _messenger;
+        private readonly EventoQueryHandler _eventoQuery;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="messenger"></param>
+        /// <param name="eventoQuery"></param>
+        public EventosController(IMessengerStorage messenger, EventoQueryHandler eventoQuery)
         {
             _messenger = messenger;
+            _eventoQuery = eventoQuery;
         }
 
         /// <summary>
@@ -36,9 +49,24 @@ namespace Muniz.Desafio.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet()]
-        public Task Get()
+        public Task<IEnumerable<EventoResult>> Get()
         {
-            return null;
+            return Task.FromResult(_eventoQuery.Execute(new ListarTodosQuery()));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pagina"></param>
+        /// <param name="exibirPorPagina"></param>
+        /// <returns></returns>
+        [HttpGet("abc")]
+        public Task<ResultPage<EventoResult>> GetPage(int pagina, int exibirPorPagina)
+        {
+            return Task.FromResult(_eventoQuery.Execute(new ListarTodosPorPaginaQuery(pagina, exibirPorPagina)));
+            //    null
+
+            //    );
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Muniz.Desafio.Domain.Queries.Query
+﻿using Muniz.Desafio.Domain.Contracts;
+
+namespace Muniz.Desafio.Domain.Queries.Query
 {
-    public class ListarTodosQuery
+    public class ListarTodosQuery : IQuery
     {
     }
 }

@@ -4,6 +4,6 @@ namespace Muniz.Desafio.Domain.Queries.Results.EventoRelatorio
 {
     public class EventosUltimaHoraResult : IResult
     {
-        public long Quantidade;
+        public long Quantidade { get; set; }
     }
 }

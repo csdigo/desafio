@@ -27,17 +27,37 @@ namespace Muniz.Infra.Repositories
             return _banco
                .Conexao
                 .GetCollection<Evento>("Eventos")
-                .Find(x=> x.Timestamp == timestamp && x.Tag == tag).FirstOrDefault();
+                .Find(x => x.Timestamp == timestamp && x.Tag == tag).FirstOrDefault();
         }
 
-        public IEnumerable<Evento> Todos()
+        public IEnumerable<Evento> ListarTodos()
         {
-            return _banco
+            var result = _banco
                .Conexao
                 .GetCollection<Evento>("Eventos")
-                .Find(e=> true)
-                .ToList();
+                .Find(e => true)
+                .ToEnumerable();
+
+            return result;
+        }
+
+        public IEnumerable<Evento> ListarTodosPorPagina(int pagina, int quantidadePorPagina, out long total)
+        {
+            total = _banco
+                .Conexao
+                .GetCollection<Evento>("Eventos")
+                .CountDocuments(x => true);
+
+
+            return _banco
+                .Conexao
+                .GetCollection<Evento>("Eventos")
+                .Find(e => true).Skip(pagina).Limit(quantidadePorPagina)
+                .ToEnumerable();
+
 
         }
+
+
     }
 }
