@@ -2,8 +2,10 @@
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using Muniz.Desafio.Domain.Contracts.Repositories;
+using Muniz.Desafio.Domain.Queries.Results.EventoRelatorio;
 using Muniz.Desafio.Infra.Connections;
 using Muniz.Domain.Desafio.Entities;
+using Muniz.Domain.Desafio.Enums;
 
 namespace Muniz.Infra.Repositories
 {
@@ -22,7 +24,7 @@ namespace Muniz.Infra.Repositories
                 .InsertOneAsync(evento);
         }
 
-        public Evento BuscarTimestampETag(long timestamp, string tag)
+        public Evento BuscarPorTimestampETag(long timestamp, string tag)
         {
             return _banco
                .Conexao
@@ -58,6 +60,13 @@ namespace Muniz.Infra.Repositories
 
         }
 
-
+        public IEnumerable<Evento> BuscarPorTipoNumerico()
+        {
+             return _banco
+                .Conexao
+                .GetCollection<Evento>("Eventos")
+                .Find(e => e.EventoTipo == EventoTipo.Numero)
+                .ToEnumerable();
+        }
     }
 }

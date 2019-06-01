@@ -9,7 +9,7 @@ using Muniz.Desafio.Domain.Queries.Results.Evento;
 namespace Muniz.Desafio.Domain.Queries.QueryHandler
 {
     public class EventoQueryHandler :
-        IQueryHandlerList<ListarTodosQuery, IEnumerable<EventoResult>>,
+        IQueryHandlerList<ListarTodosQuery, EventoResult>,
         IQueryHandlerListPage<ListarTodosPorPaginaQuery, EventoResult>
     {
         private IEventoRepository _repository;

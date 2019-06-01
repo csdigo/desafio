@@ -33,7 +33,7 @@
         </member>
         <member name="M:Muniz.Desafio.Api.Controllers.EventosController.GetPage(System.Int32,System.Int32)">
             <summary>
-            
+            Retorna os eventos por página
             </summary>
             <param name="pagina"></param>
             <param name="exibirPorPagina"></param>
@@ -51,6 +51,12 @@
             <param name="queryHandler"></param>
         </member>
         <member name="M:Muniz.Desafio.Api.Controllers.RelatoriosEventosController.Get">
+            <summary>
+            Quantidade de eventos recebidos na ultima hora
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Muniz.Desafio.Api.Controllers.RelatoriosEventosController.GetTipoNumericoDiario">
             <summary>
             Quantidade de eventos recebidos na ultima hora
             </summary>

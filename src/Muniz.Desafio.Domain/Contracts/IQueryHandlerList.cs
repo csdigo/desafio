@@ -4,8 +4,8 @@ namespace Muniz.Desafio.Domain.Contracts
 {
     public interface IQueryHandlerList<TQuery, TResult>
         where TQuery : IQuery
-        where TResult : IEnumerable<IResult>
+        where TResult : IResult
     {
-        TResult Execute(TQuery query);
+        IEnumerable<TResult> Execute(TQuery query);
     }
 }

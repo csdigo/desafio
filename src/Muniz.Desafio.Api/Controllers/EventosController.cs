@@ -55,18 +55,17 @@ namespace Muniz.Desafio.Api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Retorna os eventos por página
         /// </summary>
         /// <param name="pagina"></param>
         /// <param name="exibirPorPagina"></param>
         /// <returns></returns>
-        [HttpGet("abc")]
+        [HttpGet("Pagina")] // Mudar na documentação do swagger
         public Task<ResultPage<EventoResult>> GetPage(int pagina, int exibirPorPagina)
         {
-            return Task.FromResult(_eventoQuery.Execute(new ListarTodosPorPaginaQuery(pagina, exibirPorPagina)));
-            //    null
+            // TODO Usar o X-Total-Count para retorno da quantidade
 
-            //    );
+            return Task.FromResult(_eventoQuery.Execute(new ListarTodosPorPaginaQuery(pagina, exibirPorPagina)));
         }
     }
 }

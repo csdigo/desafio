@@ -18,7 +18,7 @@ namespace Muniz.Desafio.Domain.Commands.CommandHandler
             var evento = new Evento(command.Tag, command.Valor, command.Timestamp, command.DataRecebimento);
 
             // idempotência 
-            if (_repository.BuscarTimestampETag(evento.Timestamp, evento.Tag) != null)
+            if (_repository.BuscarPorTimestampETag(evento.Timestamp, evento.Tag) != null)
                 return; // Já foi processado
 
             _repository.InserirAsync(evento);

@@ -3,6 +3,9 @@ using Muniz.Desafio.Domain.Contracts.Repositories;
 using Muniz.Desafio.Infra.Connections;
 using Muniz.Domain.Desafio.Entities;
 using System;
+using System.Collections.Generic;
+using Muniz.Desafio.Domain.Queries.Results.EventoRelatorio;
+using Muniz.Domain.Desafio.Enums;
 
 namespace Muniz.Desafio.Infra.Repositories
 {
@@ -21,5 +24,7 @@ namespace Muniz.Desafio.Infra.Repositories
                 .GetCollection<Evento>("Eventos")
                .CountDocuments(x => x.Recebimento >= DateTime.Now.AddHours(-1));
         }
+
+        
     }
 }
