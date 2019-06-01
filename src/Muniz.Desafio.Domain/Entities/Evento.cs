@@ -7,12 +7,17 @@ namespace Muniz.Domain.Desafio.Entities
     {
         #region Constrututores 
 
-        public Evento(string tag, string valor, long timeStamp)
+        public Evento(string tag, string valor, long timeStamp, DateTime dataRecebimento)
         {
-            Id = timeStamp;
-            
-            // Data e hora que o evento foi processado
+            // TODO Mudar o ID
+            Id = Guid.NewGuid();
+
+            Tag = tag;
+            Valor = valor;
+
+            // 
             Registrado = DateTime.Now;
+            Recebimento = dataRecebimento;
 
             EventoEstado = EventoEstado.Processado;
             Timestamp = timeStamp;
@@ -32,13 +37,21 @@ namespace Muniz.Domain.Desafio.Entities
 
         #region Propriedades
 
-        public long Id { get; }
+        public Guid Id { get; }
 
         public string Tag { get; }
 
         public string Valor { get; }
 
+        /// <summary>
+        /// Data e hora que o evento foi processado
+        /// </summary>
         public DateTime Registrado { get; }
+
+        /// <summary>
+        /// Data e hora que o evento foi recebido
+        /// </summary>
+        public DateTime Recebimento { get; }
 
         public DateTime DataHoraSensor { get; }
 

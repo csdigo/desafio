@@ -15,10 +15,10 @@ namespace Muniz.Desafio.Domain.Commands.CommandHandler
         }
         public void Handle(CriarEventoCommand command)
         {
-            var evento = new Evento(command.Tag, command.Valor, command.Timestamp);
+            var evento = new Evento(command.Tag, command.Valor, command.Timestamp, command.DataRecebimento);
 
             // idempotência 
-            if (_repository.BuscarPorId(evento.Id) != null)
+            if (_repository.BuscarTimestampETag(evento.Timestamp, evento.Tag) != null)
                 return; // Já foi processado
 
             _repository.InserirAsync(evento);

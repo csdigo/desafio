@@ -7,6 +7,8 @@ using SimpleInjector;
 using Muniz.Desafio.Domain.Commands.CommandHandler;
 using MassTransit;
 using System;
+using Muniz.Desafio.Domain.Queries.QueryHandler;
+using Muniz.Desafio.Infra.Repositories;
 
 namespace Muniz.Desafio.Crosscutting.IoC
 {
@@ -15,10 +17,15 @@ namespace Muniz.Desafio.Crosscutting.IoC
         public static void Resolve(Container container)
         {
             container.Register<IEventoRepository, EventoRepository>();
-            container.Register<EventoCommandHandler>();
+            container.Register<IEventosRelatorioRepository, EventosRelatorioRepository>();
 
+            container.Register<EventoCommandHandler>();
+            container.Register<EventoRelatorioQueryHandler>();
+
+            
             // TODO configurar corretamente
             container.RegisterInstance(new MongoConnection("mongodb://localhost", "desafio"));
+
 
             var bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
             {
@@ -31,7 +38,7 @@ namespace Muniz.Desafio.Crosscutting.IoC
 
 
             });
-            container.RegisterSingleton<IBusControl>(bus);
+            container.RegisterSingleton(bus);
             container.RegisterSingleton<IMessengerStorage, MessengerStorage>();
         }
     }

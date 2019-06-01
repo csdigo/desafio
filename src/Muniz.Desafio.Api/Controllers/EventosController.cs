@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Muniz.Desafio.Api.Controllers
 {
-    
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class EventosController : ControllerBase

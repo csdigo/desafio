@@ -1,4 +1,4 @@
-﻿namespace Muniz.Desafio.Domain.Queries
+﻿namespace Muniz.Desafio.Domain.Contracts
 {
     public interface IResult
     {

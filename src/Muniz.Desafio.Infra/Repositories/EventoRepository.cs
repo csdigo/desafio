@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using Muniz.Desafio.Domain.Contracts.Repositories;
 using Muniz.Desafio.Infra.Connections;
 using Muniz.Domain.Desafio.Entities;
@@ -22,12 +22,22 @@ namespace Muniz.Infra.Repositories
                 .InsertOneAsync(evento);
         }
 
-        public Evento BuscarPorId(long id)
+        public Evento BuscarTimestampETag(long timestamp, string tag)
         {
             return _banco
                .Conexao
                 .GetCollection<Evento>("Eventos")
-                .Find(Builders<Evento>.Filter.Eq("_id", id)).FirstOrDefault();
+                .Find(x=> x.Timestamp == timestamp && x.Tag == tag).FirstOrDefault();
+        }
+
+        public IEnumerable<Evento> Todos()
+        {
+            return _banco
+               .Conexao
+                .GetCollection<Evento>("Eventos")
+                .Find(e=> true)
+                .ToList();
+
         }
     }
 }

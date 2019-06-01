@@ -4,6 +4,11 @@
         <name>Muniz.Desafio.Api</name>
     </assembly>
     <members>
+        <member name="T:Muniz.Desafio.Api.Controllers.EventosController">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Muniz.Desafio.Api.Controllers.EventosController.Post(Muniz.Desafio.Domain.Commands.Command.CriarEventoCommand)">
             <summary>
             Endpoint para registrar os eventos dos sensores
@@ -16,6 +21,23 @@
         <member name="M:Muniz.Desafio.Api.Controllers.EventosController.Get">
             <summary>
             Retorna todos os eventos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Muniz.Desafio.Api.Controllers.EventosRelatorioController">
+            <summary>
+            Relatórios e metricas dos eventos recebidos pelos sensores
+            </summary>
+        </member>
+        <member name="M:Muniz.Desafio.Api.Controllers.EventosRelatorioController.#ctor(Muniz.Desafio.Domain.Queries.QueryHandler.EventoRelatorioQueryHandler)">
+            <summary>
+            
+            </summary>
+            <param name="queryHandler"></param>
+        </member>
+        <member name="M:Muniz.Desafio.Api.Controllers.EventosRelatorioController.Get">
+            <summary>
+            Quantidade de eventos recebidos na ultima hora
             </summary>
             <returns></returns>
         </member>
