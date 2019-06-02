@@ -8,10 +8,12 @@ namespace Muniz.Desafio.Domain.Commands.CommandHandler
     public class EventoCommandHandler : ICommandHandler<CriarEventoCommand>
     {
         private readonly IEventoRepository _repository;
+        IMessengerStorage _messenger;
 
-        public EventoCommandHandler(IEventoRepository repository)
+        public EventoCommandHandler(IEventoRepository repository, IMessengerStorage messenger)
         {
             _repository = repository;
+            _messenger = messenger;
         }
         public void Handle(CriarEventoCommand command)
         {
@@ -22,6 +24,7 @@ namespace Muniz.Desafio.Domain.Commands.CommandHandler
                 return; // Já foi processado
 
             _repository.InserirAsync(evento);
+
         }
     }
 }

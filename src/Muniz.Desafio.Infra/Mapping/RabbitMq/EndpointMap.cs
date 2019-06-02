@@ -10,6 +10,7 @@ namespace Muniz.Desafio.Infra.Mapping.RabbitMq
         {
             EndpointConvention.Map<CriarEventoCommand>(
             new Uri("rabbitmq://localhost/Evento")); // Todo mudar
+
         }
     }
 }

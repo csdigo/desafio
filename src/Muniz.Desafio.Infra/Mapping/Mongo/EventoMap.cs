@@ -11,6 +11,7 @@ namespace Muniz.Desafio.Infra.Mapping.Mongo
                 cm.MapIdField(x=> x.Id);
                 cm.MapField(x=> x.Registrado);
                 cm.MapField(x => x.Tag);
+                cm.MapField(x => x.ArtoveTag);
                 cm.MapField(x => x.Timestamp);
                 cm.MapField(x => x.Valor);
                 cm.MapField(x => x.DataHoraSensor);

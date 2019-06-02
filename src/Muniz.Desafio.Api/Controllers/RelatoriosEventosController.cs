@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Muniz.Desafio.Domain.Queries.Query;
 using Muniz.Desafio.Domain.Queries.Query.EventoRelatorio;
 using Muniz.Desafio.Domain.Queries.QueryHandler;
+using Muniz.Desafio.Domain.Queries.Results;
 using Muniz.Desafio.Domain.Queries.Results.EventoRelatorio;
 
 namespace Muniz.Desafio.Api.Controllers
@@ -49,5 +50,18 @@ namespace Muniz.Desafio.Api.Controllers
             );
             
         }
-}
+
+        /// <summary>
+        /// Resumo por quantidade por subtag
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("ResumoPorTag")]
+        public Task<IEnumerable<ResumoPorTagResult>> GetResumoPorTag()
+        {
+            return Task.FromResult(
+                _queryHandler.Execute(new ResumoPorTagQuery())
+            );
+
+        }
+    }
 }

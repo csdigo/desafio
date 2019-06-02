@@ -20,11 +20,9 @@ namespace Muniz.Desafio.Crosscutting.IoC
             container.Register<IEventoRepository, EventoRepository>();
             container.Register<IEventosRelatorioRepository, EventosRelatorioRepository>();
 
-
             container.Register<EventoCommandHandler>();
             container.Register<RelatorioEventoQueryHandler>();
             container.Register<EventoQueryHandler>();
-
 
             // TODO configurar corretamente
             container.RegisterInstance(new MongoConnection("mongodb://localhost", "desafio"));
@@ -37,9 +35,8 @@ namespace Muniz.Desafio.Crosscutting.IoC
                     h.Password("guest");
 
                 });
-
-
             });
+
             container.RegisterInstance(bus);
             container.RegisterSingleton<IMessengerStorage, MessengerStorage>();
         }

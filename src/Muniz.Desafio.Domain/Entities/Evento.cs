@@ -1,4 +1,5 @@
-﻿using Muniz.Domain.Desafio.Enums;
+﻿using Muniz.Desafio.Domain.ValuesObjects;
+using Muniz.Domain.Desafio.Enums;
 using System;
 
 namespace Muniz.Domain.Desafio.Entities
@@ -12,10 +13,11 @@ namespace Muniz.Domain.Desafio.Entities
             // TODO Mudar o ID
             Id = Guid.NewGuid();
 
-            Tag = tag;
+            Tag = tag?.ToLower();
+            ArtoveTag = new Tag(Tag);
+
             Valor = valor;
 
-            // 
             Registrado = DateTime.Now;
             Recebimento = dataRecebimento;
 
@@ -31,6 +33,7 @@ namespace Muniz.Domain.Desafio.Entities
             // Verificando se o valor é erro
             if (string.IsNullOrEmpty(valor))
                 EventoEstado = EventoEstado.Erro;
+       
         }
 
         #endregion
@@ -40,6 +43,8 @@ namespace Muniz.Domain.Desafio.Entities
         public Guid Id { get; private set; }
 
         public string Tag { get; private set; }
+
+        public Tag ArtoveTag { get; private set; }
 
         public string Valor { get; private set; }
 
