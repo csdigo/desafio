@@ -1,0 +1,21 @@
+FROM microsoft/dotnet:2.1-runtime AS base
+WORKDIR /app
+
+FROM microsoft/dotnet:2.1-sdk AS build
+WORKDIR /src
+COPY Muniz.Desafio.Worker/Muniz.Desafio.Worker.csproj Muniz.Desafio.Worker/
+COPY Muniz.Desafio.Domain/Muniz.Desafio.Domain.csproj Muniz.Desafio.Domain/
+COPY Muniz.Desafio.Crosscutting/Muniz.Desafio.Crosscutting.csproj Muniz.Desafio.Crosscutting/
+COPY Muniz.Desafio.Infra/Muniz.Desafio.Infra.csproj Muniz.Desafio.Infra/
+RUN dotnet restore Muniz.Desafio.Worker/Muniz.Desafio.Worker.csproj
+COPY . .
+WORKDIR /src/Muniz.Desafio.Worker
+RUN dotnet build Muniz.Desafio.Worker.csproj -c Release -o /app
+
+FROM build AS publish
+RUN dotnet publish Muniz.Desafio.Worker.csproj -c Release -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "Muniz.Desafio.Worker.dll"]

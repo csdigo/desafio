@@ -25,11 +25,11 @@ namespace Muniz.Desafio.Crosscutting.IoC
             container.Register<EventoQueryHandler>();
 
             // TODO configurar corretamente
-            container.RegisterInstance(new MongoConnection("mongodb://localhost", "desafio"));
+            container.RegisterInstance(new MongoConnection("mongodb://bd", "desafio"));
 
             var bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
             {
-                var a = sbc.Host(new Uri("rabbitmq://localhost"), h =>
+                var a = sbc.Host(new Uri("rabbitmq://rabbit"), h =>
                 {
                     h.Username("guest");
                     h.Password("guest");

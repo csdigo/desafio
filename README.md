@@ -8,7 +8,7 @@ A solução foi divídada em 3 apiicações para atender as demandas dos requisi
         Essa aplicação tem a funcionalidade de consumir e processar as mensagens enviadas para fila.
     * Api
         Aplicação  para receber os eventos dos sensores e envio-los para fila  e  disponibilizar os endpoints dos relatórios.
-    * App
+    * App (Usada com Nginx)
         Camada para consumir a api e exibir os relatórios para os clientes.
 
 * Camadas de apoios
@@ -27,16 +27,20 @@ A solução foi divídada em 3 apiicações para atender as demandas dos requisi
     * Nginx -Proxy reverso utilizado para garantir uma camada de segurança e não expor diretamente as aplicações.
     * Docker.
 * Bibliotecas de apoio
-    *  Masstransit - Framework open souce que facilita no consumo da mensageria, o ponto forte desse framework é que ele abstraia a mensageria utilizada e deixa de forma transparente o seu uso, alem disso ele possui funcionalidades nativas de reenvio caso a mensageria esteja fora do ar ou ocupada. 
+    *  Masstransit - Framework open souce que facilita no consumo da mensageria, o ponto forte desse framework é que ele abstraia a mensageria utilizada e deixa de forma transparente o seu uso, alem disso ele possui funcionalidades nativas de reenvio caso a mensageria esteja fora do ar ou ocupada.
+
+    *  Swagger - Biblioteca open source de criação de documentação da api, todos endpoint estão comentados
 
 ## Como executar.
-Clonar o repositorio e executar o comando abaixo na pasta raiz onde está localizado o arquivo  docker-compose.yaml. 
+Clonar o repositorio e executar o comando abaixo na pasta raiz onde está localizado o arquivo  docker-compose.yaml e acessar a http://localhost e http://localhost/api/swagger. 
 ```code
 docker-compose up
 ```
 
 Obs.: Necessário o docker instalado no terminal
 
+## O que eu implementaria se tivesse mais tempo
+Deixei alguns TODOs pelo código para refatoramento  para melhorar ainda mais e também implementaria o NLog para log para auxiliar na possível correção de algum falha ou até mesmo pra auditoria.
 
 ## Considerações Gerais
 

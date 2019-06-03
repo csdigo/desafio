@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  muniz.desafio.worker:
+    image: ${DOCKER_REGISTRY-}munizdesafioworker
+    build:
+      context: .
+      dockerfile: Muniz.Desafio.Worker/Dockerfile

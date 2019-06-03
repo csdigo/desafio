@@ -18,7 +18,7 @@ namespace Muniz.Desafio.Worker
 
             var bus = Bus.Factory.CreateUsingRabbitMq(sbc =>
             {
-                var a = sbc.Host(new Uri("rabbitmq://localhost"), h =>
+                var a = sbc.Host(new Uri("rabbitmq://rabbit"), h =>
                 {
                     h.Username("guest");
                     h.Password("guest");
