@@ -32,7 +32,7 @@ namespace Muniz.Desafio.Worker
 
             });
 
-            
+
             bus.Start();
 
         }

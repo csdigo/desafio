@@ -1,5 +1,43 @@
 # Desafio para vaga de arquiteto
 
+## Solução Encontrada
+A solução foi divídada em 3 apiicações para atender as demandas dos requisitos solicitado .
+
+* Aplicações:
+    * Worker
+        Essa aplicação tem a funcionalidade de consumir e processar as mensagens enviadas para fila.
+    * Api
+        Aplicação  para receber os eventos dos sensores e envio-los para fila  e  disponibilizar os endpoints dos relatórios.
+    * App
+        Camada para consumir a api e exibir os relatórios para os clientes.
+
+* Camadas de apoios
+    *  Domain 
+        Camada negócio responsável por centralizar toda regra dos requisitos citados.
+  *  Domain.Tests
+        Camada de teste do dóminio responsável para garantir que o domínio está funcionando de acordo com os requisitos.
+    * Infra
+        Camada de acesso a dados responsável por atender as necessidades da camada de domínio.
+    * Crosscutting
+        Atualmente a camada está sendo utilizada para definição da injeção de dependência, mas o intuito e que ela seja a camada responsável pelo Log entre outros.
+## Tecnologias utilizadas
+* Tecnologias
+    * RabbitMq - Aplicação de mensageria responsável por receber as mensagens da api e entrega-las aos consumidores.
+    * MongoDb - Banco de dados NoSql responsável por guardar as informações dos eventos dos sensores, a escolha por esse banco foi devido a alta demanda de escrita e o desempenho alcançado com ele.
+    * Nginx -Proxy reverso utilizado para garantir uma camada de segurança e não expor diretamente as aplicações.
+    * Docker.
+* Bibliotecas de apoio
+    *  Masstransit - Framework open souce que facilita no consumo da mensageria, o ponto forte desse framework é que ele abstraia a mensageria utilizada e deixa de forma transparente o seu uso, alem disso ele possui funcionalidades nativas de reenvio caso a mensageria esteja fora do ar ou ocupada. 
+
+## Como executar.
+Clonar o repositorio e executar o comando abaixo na pasta raiz onde está localizado o arquivo  docker-compose.yaml. 
+```code
+docker-compose up
+```
+
+Obs.: Necessário o docker instalado no terminal
+
+
 ## Considerações Gerais
 
 * Sua solução deverá ser desenvolvida em dotnet core 2.1+.

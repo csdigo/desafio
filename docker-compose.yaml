@@ -1,0 +1,33 @@
+
+version: '3'
+
+services:
+  bd:
+    image: mongo
+    networks:
+      - desafio-network
+  rabbit:
+    image: rabbitmq
+    networks:
+      - desafio-network
+    depends_on:
+      - "bd"
+  worker:
+    image: worker
+    build:
+      context: ./src/Muniz.Desafio.Worker
+    networks:
+      - desafio-network
+    depends_on:
+      - "rabbit"
+  api:
+    image: api
+    build:
+      context: ./src/Muniz.Desafio.Api
+    networks:
+      - desafio-network
+    depends_on:
+      - "worker"
+networks: 
+    desafio-network:
+      driver: bridge
